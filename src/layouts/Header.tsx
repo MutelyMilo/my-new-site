@@ -46,7 +46,7 @@ export default () => {
             {
               tabsBtn.map((item) => {
                 return (
-                  <Button style={{color: "#fff"}}>{item}</Button>
+                  <Button key={item} style={{color: "#fff"}}>{item}</Button>
                 )
               })
             }
