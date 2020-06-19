@@ -1,36 +1,71 @@
+@import "src/assets/less/utils";
+
 .commonWidth {
   width: 1200px;
   margin: auto;
 }
 
 .layoutsContainer {
-  margin: auto;
-  background: #d8d8d8;
-  height: 100px;
+  height: 1000px;
 }
 
 .header {
-  .commonWidth;
-  height: 56px;
-  background: aquamarine;
-  display: flex;
-  justify-content: space-between;
-  .logo {
-
-  }
-  .tabs {
-
-  }
-  .userMenu {
-
+  height: 120px;
+  background: black;
+  .flex-main-justify();
+  color: #fff;
+  .content {
+    .commonWidth;
+    .flex-main-justify();
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .toolBar {
+      .flex-main-justify();
+      .tabs {
+        .flex-main-justify();
+        margin-right: 30px;
+      }
+      .userMenu {
+        .flex-main-justify();
+      }
+    }
   }
 }
 
 .content {
-  .commonWidth;
+  color: #fff;
+  background: black;
+  .content {
+    .commonWidth;
+    .context {
+      .flex-main-justify();
+      .aside {
+        .text {
+          padding: 30px 0;
+          > p {
+            color: #a1a1a1;
+            font-size: 24px;
+            line-height: 40px;
+            font-family: "Yuanti SC";
+            &:nth-last-of-type(1) {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .footer {
-  .commonWidth;
+  color: #a1a1a1;
+  background: black;
+  .content {
+    .commonWidth;
 
+  }
 }

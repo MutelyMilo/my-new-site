@@ -4,7 +4,9 @@ import styles from './index.less'
 export default () => {
   return (
     <div className={styles.footer}>
-      我是footer
+      <div className={styles.content}>
+        我是footer
+      </div>
     </div>
   )
 }
