@@ -8,7 +8,7 @@ function App() {
         <div className="App">
           <Switch>
             <Route path={"/"} component={Layouts}/>
-            <Redirect from={"/*"} to={"/"}/>
+            <Redirect from={"/*"} to={"/home"}/>
           </Switch>
         </div>
     </HashRouter>

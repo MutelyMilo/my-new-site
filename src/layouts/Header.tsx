@@ -4,6 +4,8 @@ import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 import {Button} from "@material-ui/core";
+import {useHistory} from 'react-router-dom';
+import ColorBtn from "../common/ColorBtn";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -12,8 +14,8 @@ const StyledBadge = withStyles((theme) => ({
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
     '&::after': {
       position: 'absolute',
-      top: 0,
-      left: 0,
+      top: -1,
+      left: -1,
       width: '100%',
       height: '100%',
       borderRadius: '50%',
@@ -34,29 +36,64 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-const tabsBtn = ["About", "博文", "生活"]
+const tabsBtn = [{
+  color: "",
+  text: "About",
+  path: "/about",
+}, {
+  color: "",
+  text: "Blog",
+  path: "/blog",
+}, {
+  color: "",
+  text: "Live",
+  path: "/live",
+}];
 
 export default () => {
+  const history = useHistory()
   return (
     <div className={styles.header}>
-      <div className={styles.content}>
-        <div className={styles.logo}>LOGO</div>
+      <div className={styles.headerContent}>
+        <div
+          className={styles.logo}
+          onClick={() => {
+            history.push('/')
+          }}
+        >
+          LOGO
+        </div>
         <div className={styles.toolBar}>
           <div className={styles.tabs}>
             {
               tabsBtn.map((item) => {
                 return (
-                  <Button key={item} style={{color: "#fff"}}>{item}</Button>
-                )
+                  <Button
+                    key={item.text}
+                    style={{color: item.color || "#fff"}}
+                    onClick={() => {
+                      history.push(item.path || '/')
+                    }}
+                  >
+                    {item.text}
+                  </Button>
+                );
               })
             }
           </div>
           <div className={styles.userMenu}>
             {
               true && (
-                <Button variant="contained" color="primary" style={{marginRight: 20}}>
+                <div className={styles.login}>
                   登 录
-                </Button>
+                </div>
+              )
+            }
+            {
+              true && (
+                <ColorBtn>
+                  注 册
+                </ColorBtn>
               )
             }
             {
@@ -68,8 +105,9 @@ export default () => {
                     horizontal: 'right',
                   }}
                   variant="dot"
+                  style={{marginLeft: 20, width: 42, height: 42}}
                 >
-                  <Avatar alt="Remy Sharp" src="/public/logo192.png" />
+                  <Avatar alt="Remy Sharp" src="/public/logo192.png"/>
                 </StyledBadge>
               )
             }
@@ -77,5 +115,5 @@ export default () => {
         </div>
       </div>
     </div>
-  )
+  );
 }

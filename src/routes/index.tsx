@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
-import {Index, RouterItem} from "./config";
+import {routesConfig, RouterItem} from "./config";
 
 export const RouteWithSubRoutes = (route: RouterItem) => {
   return (
@@ -8,7 +8,7 @@ export const RouteWithSubRoutes = (route: RouterItem) => {
       exact={route.exact}
       path={route.path}
       render={_ => {
-        document.title = route.title || "";
+        document.title = route.title || "MilkSaga";
         return <route.component {..._} routes={route.routes} />
       }}
     />
@@ -18,10 +18,10 @@ export const RouteWithSubRoutes = (route: RouterItem) => {
 export default () => (
   <Switch>
     {
-      Index.map((item, index) => (
+      routesConfig.map((item, index) => (
         <RouteWithSubRoutes key={index} {...item}/>
       ))
     }
-    <Redirect from={"/"} to={"/course-management/online-course"}/>
+    <Redirect from={"/"} to={"/home"}/>
   </Switch>
 );

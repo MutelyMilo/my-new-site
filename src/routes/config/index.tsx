@@ -1,6 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable';
-import Loading from 'src/common/loading'
+import Loading from 'src/common/Loading'
 
 export interface RouterItem {
   path: string,
@@ -15,16 +15,23 @@ const Home = Loadable({
   loader: () => import('src/containers/Home'),
   loading: Loading,
 });
+const About = Loadable({
+  loader: () => import('src/containers/About'),
+  loading: Loading,
+});
+const Blog = Loadable({
+  loader: () => import('src/containers/Blog'),
+  loading: Loading,
+});
 
-
-export const Index: Array<RouterItem> = [
+export const routesConfig: Array<RouterItem> = [
   {
-    path: '/', exact: false, component: Home, title: '——', routes:
-      [{
-        path: '/home', exact: true, component: Home, title: ''
-      }]
+    path: '/home', exact: true, component: Home, title: ''
   },
-  // {
-  //   path: '/other', exact: false, component: Other, icon: <ControlOutlined />, title: '测试TAB',
-  // }
+  {
+    path: '/about', exact: true, component: About, title: ''
+  },
+  {
+    path: '/blog', exact: true, component: Blog, title: ''
+  },
 ];
