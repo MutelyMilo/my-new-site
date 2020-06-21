@@ -5,13 +5,15 @@ import Footer from "./Footer";
 import styles from './index.less'
 import Player from "../common/Player";
 
-export default () => {
+const Layouts = () => {
   return (
     <div className={styles.layoutsContainer}>
-      <Player />
       <Header/>
       <Content/>
       <Footer/>
+      <Player />
     </div>
   );
 }
+
+export default Layouts;

@@ -6,6 +6,13 @@ import { withStyles } from '@material-ui/core/styles';
 import {Button} from "@material-ui/core";
 import {useHistory} from 'react-router-dom';
 import ColorBtn from "../common/ColorBtn";
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import avatar from 'src/assets/img/timg.png'
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -37,23 +44,36 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 const tabsBtn = [{
-  color: "",
+  color: "#fff900",
   text: "About",
   path: "/about",
 }, {
-  color: "",
+  color: "#2d2dff",
   text: "Blog",
   path: "/blog",
 }, {
-  color: "",
+  color: "#2fff2f",
   text: "Live",
   path: "/live",
+}, {
+  color: "white",
+  text: "Message board",
+  path: "/message",
 }];
 
-export default () => {
-  const history = useHistory()
+const Header = () => {
+  const history = useHistory();
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef<HTMLButtonElement>(null);
+  function handleListKeyDown(event: React.KeyboardEvent) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+  
   return (
-    <div className={styles.header}>
+    <div className={`${styles.header} ${history.location.pathname === "/about" && styles.about}`}>
       <div className={styles.headerContent}>
         <div
           className={styles.logo}
@@ -70,7 +90,7 @@ export default () => {
                 return (
                   <Button
                     key={item.text}
-                    style={{color: item.color || "#fff"}}
+                    style={{color: item.color || "#fff", margin: "0 10px"}}
                     onClick={() => {
                       history.push(item.path || '/')
                     }}
@@ -98,17 +118,46 @@ export default () => {
             }
             {
               true && (
-                <StyledBadge
-                  overlap="circle"
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
-                  }}
-                  variant="dot"
-                  style={{marginLeft: 20, width: 42, height: 42}}
-                >
-                  <Avatar alt="Remy Sharp" src="/public/logo192.png"/>
-                </StyledBadge>
+                <React.Fragment>
+                  <StyledBadge
+                    overlap="circle"
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'right',
+                    }}
+                    variant="dot"
+                    style={{marginLeft: 20, width: 42, height: 42, position: "relative"}}
+                    aria-haspopup="true"
+                  >
+                    <Avatar
+                      alt="Remy Sharp"
+                      src={avatar}
+                    />
+                    <button
+                      style={{overflow: "hidden", width: 42,opacity: 0, position: "absolute", zIndex: 9, top: 0, left: 0, height: "100%", display: "block", padding: 0}}
+                      ref={anchorRef}
+                      onClick={() => {setOpen(!open)}}
+                    />
+                  </StyledBadge>
+                  <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                    {({TransitionProps, placement}) => (
+                      <Grow
+                        {...TransitionProps}
+                        style={{transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'}}
+                      >
+                        <Paper>
+                          <ClickAwayListener onClickAway={() => {setOpen(!open)}}>
+                            <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                              <MenuItem onClick={() => {setOpen(false)}}>Profile</MenuItem>
+                              <MenuItem onClick={() => {setOpen(false)}}>My account</MenuItem>
+                              <MenuItem onClick={() => {setOpen(false)}}>Logout</MenuItem>
+                            </MenuList>
+                          </ClickAwayListener>
+                        </Paper>
+                      </Grow>
+                    )}
+                  </Popper>
+                </React.Fragment>
               )
             }
           </div>
@@ -117,3 +166,5 @@ export default () => {
     </div>
   );
 }
+
+export default Header;

@@ -15,7 +15,7 @@ export const RouteWithSubRoutes = (route: RouterItem) => {
   );
 };
 
-export default () => (
+const mapRoutes = () => (
   <Switch>
     {
       routesConfig.map((item, index) => (
@@ -25,3 +25,5 @@ export default () => (
     <Redirect from={"/"} to={"/home"}/>
   </Switch>
 );
+
+export default mapRoutes;

@@ -5,7 +5,7 @@ import Avatar from "../assets/img/homeAvatar.jpeg";
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import {useHistory} from 'react-router-dom';
 
-export default () => {
+const Home = () => {
   const history = useHistory()
   return (
     <div className={styles.homeContainer}>
@@ -28,7 +28,7 @@ export default () => {
               </p>
             </div>
           </div>
-          <div>
+          <div className={styles.photo}>
             <img width={400} src={Avatar} alt=""/>
           </div>
         </div>
@@ -36,3 +36,5 @@ export default () => {
     </div>
   )
 }
+
+export default Home;

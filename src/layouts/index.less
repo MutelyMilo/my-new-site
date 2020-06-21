@@ -12,25 +12,41 @@
 .header {
   height: 70px;
   background: #ec7c7c;
+  transition: all .3s;
+  &.about {
+    background: #7c7fec;
+  }
+
   .flex-main-justify();
   color: #fff;
+
   .headerContent {
     .commonWidth;
     .flex-main-justify();
+
     .logo {
       cursor: pointer;
       display: flex;
       align-items: center;
     }
+
     .toolBar {
       .flex-main-justify();
+
       .tabs {
         .flex-main-justify();
         margin-right: 30px;
+        button {
+          font-weight: bold;
+          font-family: Futura;
+          letter-spacing: 2px;
+        }
       }
+
       .userMenu {
         .flex-main-justify();
         align-items: center;
+
         .login {
           height: 42px;
           box-sizing: border-box;
@@ -43,9 +59,10 @@
           width: 70px;
           text-align: center;
           transition: all .2s;
+
           &:hover {
-            border-color: #91c7dd;
-            color: #91c7dd;
+            border-color: gold;
+            color: gold;
           }
         }
       }
@@ -55,6 +72,10 @@
 
 .content {
   background: #91c7dd;
+  transition: all .3s;
+  &.about {
+    background: #ef7267;
+  }
   height: calc(100vh - 170px);
   overflow-y: auto;
   .custom-scroll(transparent);
@@ -66,6 +87,10 @@
   text-align: center;
   padding: 20px 0;
   background: #91c7dd;
+  transition: all .3s;
+  &.about {
+    background: #ef7267;
+  }
   line-height: 30px;
   .footerContent {
     .commonWidth;

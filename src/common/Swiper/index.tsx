@@ -1,9 +1,16 @@
 import React, {useEffect} from 'react';
 import Swiper from 'swiper';
+import styles from './index.less';
 import "swiper/css/swiper.min.css";
 import img from 'src/assets/img/WechatIMG10.jpeg'
 
-export default () => {
+interface IProps {
+  style: {
+    [key: string]: string | number;
+  }
+}
+
+const SwiperComponent = (props: IProps) => {
   useEffect(() => {
     new Swiper('.swiper-container', {
       loop: true,
@@ -22,25 +29,27 @@ export default () => {
     })
   })
   return (
-    <div className="swiper-container" style={{borderRadius: "8px", boxShadow: "0 0 10px #6e68bd"}}>
-      <div className="swiper-wrapper">
-        <div className="swiper-slide" onClick={() => {
-          console.log(123)
-        }}>
-          <img src={img} alt=""/>
+    <div className={styles.swiperContainer} style={{...props.style}}>
+      <div className="swiper-container" style={{borderRadius: "4px"}}>
+        <div className="swiper-wrapper">
+          <div className="swiper-slide" onClick={() => {
+            console.log(123)
+          }}>
+            <img src={img} alt=""/>
+          </div>
+          <div className="swiper-slide">
+            <img src={img} alt=""/>
+          </div>
+          <div className="swiper-slide">
+            <img src={img} alt=""/>
+          </div>
         </div>
-        <div className="swiper-slide">
-          <img src={img} alt=""/>
-        </div>
-        <div className="swiper-slide">
-          <img src={img} alt=""/>
-        </div>
+        <div className="swiper-pagination" />
+        <div className="swiper-button-prev" />
+        <div className="swiper-button-next" />
       </div>
-      <div className="swiper-pagination"></div>
-    
-      <div className="swiper-button-prev"></div>
-      <div className="swiper-button-next"></div>
-  
     </div>
   )
 }
+
+export default SwiperComponent;

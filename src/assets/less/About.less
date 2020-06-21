@@ -1,0 +1,43 @@
+@import "common";
+
+.aboutContainer {
+  .publicContainer;
+  .content {
+    .publicContent;
+    .aboutMe {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+      .image {
+        width: 30%;
+        display: flex;
+        align-items: center;
+        >img {
+          .animation(fadeInLeft 1s ease);
+          width: 100%;
+          display: block;
+        }
+      }
+      .text {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        font-family: "Yuanti SC";
+        flex: 1;
+        line-height: 30px;
+        padding: 16px 24px 16px 100px;
+        h4 {
+          font-size: 24px;
+          color: #fff;
+          line-height: 50px;
+          font-weight: bold;
+        }
+        p {
+          color: #1a1a1a;
+          opacity: 0.6;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
