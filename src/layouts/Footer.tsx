@@ -4,7 +4,6 @@ import {useHistory} from 'react-router-dom';
 
 const Footer = () => {
   const history = useHistory();
-  console.log(history.location.pathname === "/about")
   return (
     <div className={`${styles.footer} ${history.location.pathname === "/about" && styles.about}`}>
       <div className={styles.footerContent}>

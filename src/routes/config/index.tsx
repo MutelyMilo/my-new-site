@@ -14,6 +14,7 @@ const Home = Loadable(() => import('src/containers/Home'));
 const About = Loadable(() => import('src/containers/About'));
 const Blog = Loadable(() => import('src/containers/Blog'));
 const Live = Loadable(() => import('src/containers/Live'));
+const MessageBoard = Loadable(() => import('src/containers/MessageBoard'));
 
 export const routesConfig: Array<RouterItem> = [
   {
@@ -27,5 +28,8 @@ export const routesConfig: Array<RouterItem> = [
   },
   {
     path: '/live', exact: true, component: Live, title: ''
+  },
+  {
+    path: '/message', exact: true, component: MessageBoard, title: ''
   },
 ];
