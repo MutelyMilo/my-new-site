@@ -9,23 +9,33 @@
       font-weight: bold;
       line-height: 50px;
       margin-bottom: 20px;
-      font-weight: bold;
       font-family: "Yuanti TC";
+      color: #81ec4b;
+      .animation(fadeIn .5s ease)
     }
     .contentTop {
+      .swiperContainer {
+        img {
+          display: block;
+          width: 100%;
+        }
+        width: 70%;
+        .animation(fadeInLeft .5s ease)
+      }
       .flex-main-justify;
       .funBar {
         flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        background: black;
+        background: white;
         border-radius: 4px;
-        box-shadow: 0 0 10px black;
-        color: white;
+        box-shadow: 2px 2px 5px #383737;
+        color: black;
         padding: 16px 24px;
         box-sizing: border-box;
         margin-left: 20px;
+        .animation(fadeInRight .5s ease)
       }
     }
     .arrowDown {
@@ -36,7 +46,21 @@
       color: #fff;
     }
     .photoWall {
-
+      .albumRow {
+        display: flex;
+        justify-content: flex-start;
+        .album {
+          width: 24%;
+          background: white;
+          height: 200px;
+        }
+      }
+    }
+    .photoWallBar {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      color: white;
     }
   }
 }

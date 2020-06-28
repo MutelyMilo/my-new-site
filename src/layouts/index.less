@@ -10,16 +10,22 @@
 }
 
 .header {
-  height: 70px;
-  background: #ec7c7c;
-  transition: all .3s;
+  height: 120px;
+  background: linear-gradient(rgba(237, 124, 126, 1), rgba(145, 199, 219, 1));
   &.about {
-    background: #7c7fec;
+    background: linear-gradient(rgba(124, 128, 231, 1), rgba(240, 113, 107, 1));
   }
-
+  &.live {
+    background: linear-gradient(rgba(0, 190, 227, 1), rgba(252, 127, 59, 1));
+  }
+  &.blog {
+    background: linear-gradient(red, rgba(0, 0, 0, 1), );
+  }
+  &.message {
+    background: linear-gradient(orange, #58a758);
+  }
   .flex-main-justify();
   color: #fff;
-
   .headerContent {
     .commonWidth;
     .flex-main-justify();
@@ -61,8 +67,7 @@
           transition: all .2s;
 
           &:hover {
-            border-color: gold;
-            color: gold;
+            .animation(pulse .5s infinite)
           }
         }
       }
@@ -72,11 +77,19 @@
 
 .content {
   background: #91c7dd;
-  transition: all .3s;
   &.about {
     background: #ef7267;
   }
-  height: calc(100vh - 170px);
+  &.blog {
+    background: black;
+  }
+  &.live {
+    background: #fb8029;
+  }
+  &.message {
+    background: #58a758;
+  }
+  height: calc(100vh - 220px);
   overflow-y: auto;
   .custom-scroll(transparent);
 }
@@ -87,9 +100,17 @@
   text-align: center;
   padding: 20px 0;
   background: #91c7dd;
-  transition: all .3s;
   &.about {
     background: #ef7267;
+  }
+  &.live {
+    background: #fb8029;
+  }
+  &.blog {
+    background: black;
+  }
+  &.message {
+    background: #58a758;
   }
   line-height: 30px;
   .footerContent {

@@ -1,13 +1,10 @@
 import React, {useEffect} from 'react';
 import Swiper from 'swiper';
-import styles from './index.less';
 import "swiper/css/swiper.min.css";
 import img from 'src/assets/img/WechatIMG10.jpeg'
 
 interface IProps {
-  style: {
-    [key: string]: string | number;
-  }
+  className: string
 }
 
 const SwiperComponent = (props: IProps) => {
@@ -29,7 +26,7 @@ const SwiperComponent = (props: IProps) => {
     })
   })
   return (
-    <div className={styles.swiperContainer} style={{...props.style}}>
+    <div {...props}>
       <div className="swiper-container" style={{borderRadius: "4px"}}>
         <div className="swiper-wrapper">
           <div className="swiper-slide" onClick={() => {

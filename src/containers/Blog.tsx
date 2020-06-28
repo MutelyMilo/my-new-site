@@ -6,12 +6,20 @@ const Blog = () => {
     <div className={styles.blogContainer}>
       <div className={styles.content}>
         <div className={styles.left}>
-          <div className={styles.skills}>
+          <h4>
             相关技术
+          </h4>
+          <div className={styles.tagList}>
+            <div className={styles.tagItem}>javascript</div>
+            <div className={styles.tagItem}>javascript</div>
+            <div className={styles.tagItem}>javascript</div>
+            <div className={styles.tagItem}>javascript</div>
+            <div className={styles.tagItem}>javascript</div>
+            <div className={styles.tagItem}>javascript</div>
           </div>
         </div>
         <div className={styles.right}>
-          <p>最新文章</p>
+          <h4 className={styles.title}>最新文章</h4>
           <div className={styles.articleList}>
             <div className={styles.articleItem}>
               <p className={styles.title}>alksjdkasjdlkasjd</p>

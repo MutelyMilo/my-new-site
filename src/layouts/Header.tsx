@@ -48,11 +48,11 @@ const tabsBtn = [{
   text: "About",
   path: "/about",
 }, {
-  color: "#2d2dff",
+  color: "#3a3af2",
   text: "Blog",
   path: "/blog",
 }, {
-  color: "#2fff2f",
+  color: "#48fb29",
   text: "Live",
   path: "/live",
 }, {
@@ -71,9 +71,22 @@ const Header = () => {
       setOpen(false);
     }
   }
-  
+  const pathname = history.location.pathname;
+  const routerStyles = () => {
+    if (pathname === "/about") {
+      return styles.about
+    } else if (pathname === "/live") {
+      return  styles.live
+    } else if (pathname === "/blog") {
+      return styles.blog
+    } else if (pathname === "/message") {
+      return styles.message
+    } else {
+      return ""
+    }
+  }
   return (
-    <div className={`${styles.header} ${history.location.pathname === "/about" && styles.about}`}>
+    <div className={`${styles.header} ${routerStyles()}`}>
       <div className={styles.headerContent}>
         <div
           className={styles.logo}
