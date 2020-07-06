@@ -5,12 +5,12 @@ import Layouts from 'src/layouts';
 function App() {
   return (
     <HashRouter>
-        <div className="App">
-          <Switch>
-            <Route path={"/"} component={Layouts}/>
-            <Redirect from={"/*"} to={"/home"}/>
-          </Switch>
-        </div>
+      <div className="App">
+        <Switch>
+          <Route path={"/"} component={Layouts}/>
+          <Redirect from={"/*"} to={"/home"}/>
+        </Switch>
+      </div>
     </HashRouter>
   );
 }

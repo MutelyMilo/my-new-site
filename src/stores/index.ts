@@ -1,16 +1,14 @@
 import React from 'react';
 import { configure } from 'mobx';
 
-// import AuthStore from './common/AuthStore'
-// import OnlineCourseStore from "./modules/OnlineCourseStore";
+import LiveStore from 'src/stores/models/LiveStore';
 
 configure({
   enforceActions: 'always',
 });
 
 const storeContext = React.createContext({
-  // AuthStore: new AuthStore(),
-  // OnlineCourseStore: new OnlineCourseStore(),
+  LiveStore: new LiveStore()
 });
 
 const useStores = () => React.useContext(storeContext);

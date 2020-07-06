@@ -18,7 +18,7 @@ const MessageBoard = Loadable(() => import('src/containers/MessageBoard'));
 
 export const routesConfig: Array<RouterItem> = [
   {
-    path: '/home', exact: true, component: Home, title: ''
+    path: '/home', exact: true, component: Home, title: 'lasjlasjdlkas'
   },
   {
     path: '/about', exact: true, component: About, title: ''
@@ -31,5 +31,5 @@ export const routesConfig: Array<RouterItem> = [
   },
   {
     path: '/message', exact: true, component: MessageBoard, title: ''
-  },
+  }
 ];

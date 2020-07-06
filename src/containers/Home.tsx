@@ -4,8 +4,9 @@ import SmileImg from "../assets/img/timg.png";
 import Avatar from "../assets/img/homeAvatar.jpeg";
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import {useHistory} from 'react-router-dom';
+import {observer} from "mobx-react";
 
-const Home = () => {
+const Home = observer(() => {
   const history = useHistory()
   return (
     <div className={styles.homeContainer}>
@@ -35,6 +36,6 @@ const Home = () => {
       </div>
     </div>
   )
-}
+})
 
 export default Home;

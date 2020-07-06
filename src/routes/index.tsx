@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom';
+import { Route, Switch, Redirect} from 'react-router-dom';
 import {routesConfig, RouterItem} from "./config";
 
 export const RouteWithSubRoutes = (route: RouterItem) => {
@@ -18,8 +18,8 @@ export const RouteWithSubRoutes = (route: RouterItem) => {
 const mapRoutes = () => (
   <Switch>
     {
-      routesConfig.map((item, index) => (
-        <RouteWithSubRoutes key={index} {...item}/>
+      routesConfig.map((item) => (
+        <RouteWithSubRoutes key={item.path} {...item}/>
       ))
     }
     <Redirect from={"/"} to={"/home"}/>

@@ -8,6 +8,8 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Upload from "../common/Upload";
 import CreateAlbumDialog from "../components/Live/CreateAlbumDialog";
 import AddIcon from '@material-ui/icons/Add';
+import useStores from "../stores";
+import {observer} from "mobx-react";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,15 +24,21 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Live = () => {
+const Live = observer(() => {
   const [open, setOpen] = useState<boolean>(false)
   const classes = useStyles();
+  const {
+    LiveStore: {
+      photoAlbumList, handlePhotoAlbumListChange
+    },
+  } = useStores();
+  
   return (
     <div className={styles.liveContainer}>
       <div className={styles.content}>
         <div className={styles.title}>
           <p>生活不只是眼前的轻易，还有诗和远方的田野。</p>
-          <p>你赤手空拳来到人世间，为找到那片海不顾一切。</p>
+          <p onClick={() => {handlePhotoAlbumListChange()}}>你赤手空拳来到人世间，为找到那片海不顾一切。</p>
         </div>
         <div className={styles.contentTop}>
           <SwiperComponent className={styles.swiperContainer} />
@@ -39,9 +47,6 @@ const Live = () => {
           </div>
         </div>
         <ArrowDownwardIcon className={styles.arrowDown} fontSize={"large"} />
-  
-        
-        
         
         <Upload />
         <div className={styles.photoWallBar}>
@@ -55,24 +60,22 @@ const Live = () => {
   
         <div className={styles.photoWall}>
           <Grid container spacing={3}>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
+            {
+              photoAlbumList.map((item: any) => {
+                return (
+                  <Grid item xs={3}>
+                    {item.name}
+                    <Paper className={classes.paper}>xs=3</Paper>
+                  </Grid>
+                )
+              })
+            }
           </Grid>
         </div>
       </div>
       <CreateAlbumDialog onOk={() => {}} open={open} onClose={() => {setOpen(false)}} />
     </div>
   )
-};
+});
 
 export default Live;

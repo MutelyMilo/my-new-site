@@ -100,7 +100,7 @@ service.interceptors.response.use(
  * @param _cancelToken is boolean
  * @param header
  */
-const get = (url: string, params?: any, _cancelToken = false, header = {}) => {
+const get = (url: string, params?: any, _cancelToken = false, header = {}): Promise<any> => {
   let _config: AxiosRequestConfig = {
     url: url,
     method: 'get',
