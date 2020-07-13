@@ -8,6 +8,9 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Input from '@material-ui/core/Input';
+import Upload from "../../common/Upload";
 
 interface IProps {
   open: boolean;
@@ -66,13 +69,34 @@ export default function CustomizedDialogs(props: IProps) {
   
   
   return (
-    <Dialog onClose={props.onClose} aria-labelledby="customized-dialog-title" open={props.open} fullWidth={true}
-            maxWidth={"sm"}>
+    <Dialog
+      onClose={props.onClose}
+      aria-labelledby="customized-dialog-title"
+      open={props.open}
+      fullWidth={true}
+      maxWidth={"sm"}
+    >
       <DialogTitle id="customized-dialog-title" onClose={props.onClose}>
         创建相册
       </DialogTitle>
       <DialogContent dividers>
-        阿巴斯不打算到卡上的
+        <Grid container spacing={3} alignItems={"center"}>
+          <Grid item container xs={4} justify={"flex-end"} >
+            相册名称：
+          </Grid>
+          <Grid item xs={8}>
+            <Input placeholder="输入相册名称" onChange={e => {
+              console.log(e.target.value)}} />
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item container xs={4} justify={"flex-end"} style={{lineHeight: "36px"}} >
+            上传封面图：
+          </Grid>
+          <Grid item xs={8}>
+            <Upload />
+          </Grid>
+        </Grid>
       </DialogContent>
       <DialogActions>
         <Button autoFocus onClick={props.onClose}>

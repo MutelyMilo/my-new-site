@@ -5,7 +5,6 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Upload from "../common/Upload";
 import CreateAlbumDialog from "../components/Live/CreateAlbumDialog";
 import AddIcon from '@material-ui/icons/Add';
 import useStores from "../stores";
@@ -48,16 +47,13 @@ const Live = observer(() => {
         </div>
         <ArrowDownwardIcon className={styles.arrowDown} fontSize={"large"} />
         
-        <Upload />
         <div className={styles.photoWallBar}>
           <div>照片墙</div>
           <div onClick={() => {setOpen(true)}}>
-            创建相册
-              <AddIcon />
+            创建相册 <AddIcon />
           </div>
         </div>
-  
-  
+        
         <div className={styles.photoWall}>
           <Grid container spacing={3}>
             {

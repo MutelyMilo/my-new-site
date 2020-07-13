@@ -1,0 +1,27 @@
+@import "src/assets/less/common";
+
+.uploadWrapper {
+  position: relative;
+  .fileInfo {
+    position: relative;
+    background: #eaeaea;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 10px;
+    .animation(fadeInUp .5s ease)
+  }
+  .imgWrapper {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    width: 200px;
+    height: 150px;
+    >img {
+      display: block;
+      width: 100%;
+    }
+  }
+}

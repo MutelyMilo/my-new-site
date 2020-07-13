@@ -6,7 +6,7 @@ export default class LiveStore {
   
   @action handlePhotoAlbumListChange = () => {
     const _this = this;
-    _this.photoAlbumList = [1, 2, 3]
+    _this.photoAlbumList = [1, 2, 3, 4, 5]
   }
   @action init = () => {
     Apis.GetPhotoAlbum().then(res => {
