@@ -44,20 +44,22 @@ const Upload = () => {
   }
   
   const handleSubmit = () => {
-    get("http://49.234.8.97/api/token").then(res => {
-      console.log(res)
-      let type = file.type.substr(file.type.indexOf('/') + 1);
-      console.log(type)
-      const formData: any = new FormData();
-      formData.append('file', file);
-      formData.append('key', file.name);
-      formData.append('token', "c6QQOQZDD7gdwCEfv7emWIIpZjcBnh6-Gk5x7XKL:GB0UMZ8Jy2KSBWTiMQZ7ko7YQ-I=:eyJzY29wZSI6Im91ci1waG90byIsImRlYWRsaW5lIjoxNTk0NjUyNzAzfQ==");
-      postFile("https://upload-z1.qiniup.com", formData).then(res => {
-        console.log(res)
-        // url
-        const url = "http://cdn.milksaga.com/" + file.name;
-        console.log(url)
-      })
+    get("/api/v1/qiniu-token").then(res => {
+      if (res.statusCode === 0) {
+        const type = file.type.substr(file.type.indexOf('/') + 1);
+        const fileName = uuidv4() + '.' + type
+        console.log(fileName)
+        const formData: any = new FormData();
+        formData.append('file', file);
+        formData.append('key', fileName);
+        formData.append('token', res.data.token);
+        postFile("https://upload-z1.qiniup.com", formData).then((res: any) => {
+          console.log(res)
+          // url
+          const url = "http://cdn.milksaga.com/" + res.key;
+          console.log(url)
+        })
+      }
     })
     console.log(imageUrl)
     
